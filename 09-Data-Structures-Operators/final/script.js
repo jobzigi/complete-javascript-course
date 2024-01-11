@@ -30,15 +30,15 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
-  orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
+  orderDelivery({starterIndex = 1, mainIndex = 0, time = '20:00', address}) {
     console.log(
-      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+        `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`,
     );
   },
 
   orderPasta(ing1, ing2, ing3) {
     console.log(
-      `Here is your declicious pasta with ${ing1}, ${ing2} and ${ing3}`
+        `Here is your declicious pasta with ${ing1}, ${ing2} and ${ing3}`,
     );
   },
 
@@ -48,7 +48,7 @@ const restaurant = {
   },
 };
 
-///////////////////////////////////////
+// /////////////////////////////////////
 // String Methods Practice
 
 const flights =
@@ -59,21 +59,21 @@ const flights =
 //   🔴 Delayed Arrival from HEL to FAO (12h05)
 //            Departure from FAO to LIS (12h30)
 
-const getCode = str => str.slice(0, 3).toUpperCase();
+const getCode = (str) => str.slice(0, 3).toUpperCase();
 
 for (const flight of flights.split('+')) {
   const [type, from, to, time] = flight.split(';');
   const output = `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll(
-    '_',
-    ' '
+      '_',
+      ' ',
   )} ${getCode(from)} ${getCode(to)} (${time.replace(':', 'h')})`.padStart(36);
   console.log(output);
 }
 
-///////////////////////////////////////
+// /////////////////////////////////////
 // Coding Challenge #4
 
-/* 
+/*
 Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
 
 The input will come from a textarea inserted into the DOM (see code below), and conversion will happen when the button is pressed.
@@ -81,7 +81,7 @@ The input will come from a textarea inserted into the DOM (see code below), and 
 THIS TEST DATA (pasted to textarea)
 underscore_case
  first_name
-Some_Variable 
+Some_Variable
   calculate_AGE
 delayed_departure
 
@@ -282,10 +282,10 @@ console.log(typeof new String('jonas'));
 console.log(typeof new String('jonas').slice(1));
 */
 
-///////////////////////////////////////
+// /////////////////////////////////////
 // Coding Challenge #3
 
-/* 
+/*
 Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
 
 1. Create an array 'events' of the different game events that happened (no duplicates)
@@ -444,10 +444,10 @@ console.log(
 console.log(new Set('jonasschmedtmann').size);
 */
 
-///////////////////////////////////////
+// /////////////////////////////////////
 // Coding Challenge #2
 
-/* 
+/*
 Let's continue with our football betting app!
 
 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
@@ -613,10 +613,10 @@ for (const [i, el] of menu.entries()) {
 // console.log([...menu.entries()]);
 */
 
-///////////////////////////////////////
+// /////////////////////////////////////
 // Coding Challenge #1
 
-/* 
+/*
 We're building a football betting app (soccer for my American friends 😅)!
 
 Suppose we get data from a web service about a certain game (below). In this challenge we're gonna work with the data. So here are your tasks:

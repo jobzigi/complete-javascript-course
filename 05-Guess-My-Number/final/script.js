@@ -15,11 +15,11 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0;
 
-const displayMessage = function (message) {
+const displayMessage = function(message) {
   document.querySelector('.message').textContent = message;
 };
 
-document.querySelector('.check').addEventListener('click', function () {
+document.querySelector('.check').addEventListener('click', function() {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess, typeof guess);
 
@@ -81,7 +81,7 @@ document.querySelector('.check').addEventListener('click', function () {
   // }
 });
 
-document.querySelector('.again').addEventListener('click', function () {
+document.querySelector('.again').addEventListener('click', function() {
   score = 20;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
 
@@ -95,10 +95,10 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.number').style.width = '15rem';
 });
 
-///////////////////////////////////////
+// /////////////////////////////////////
 // Coding Challenge #1
 
-/* 
+/*
 Implement a game rest functionality, so that the player can make a new guess! Here is how:
 
 1. Select the element with the 'again' class and attach a click event handler

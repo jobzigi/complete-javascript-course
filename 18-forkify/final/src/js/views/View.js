@@ -13,8 +13,9 @@ export default class View {
    * @todo Finish implementation
    */
   render(data, render = true) {
-    if (!data || (Array.isArray(data) && data.length === 0))
+    if (!data || (Array.isArray(data) && data.length === 0)) {
       return this.renderError();
+    }
 
     this._data = data;
     const markup = this._generateMarkup();
@@ -47,10 +48,11 @@ export default class View {
       }
 
       // Updates changed ATTRIBUES
-      if (!newEl.isEqualNode(curEl))
-        Array.from(newEl.attributes).forEach(attr =>
-          curEl.setAttribute(attr.name, attr.value)
+      if (!newEl.isEqualNode(curEl)) {
+        Array.from(newEl.attributes).forEach((attr) =>
+          curEl.setAttribute(attr.name, attr.value),
         );
+      }
     });
   }
 

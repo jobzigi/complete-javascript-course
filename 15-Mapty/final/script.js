@@ -66,7 +66,7 @@ class Cycling extends Workout {
 // const cycling1 = new Cycling([39, -12], 27, 95, 523);
 // console.log(run1, cycling1);
 
-///////////////////////////////////////
+// /////////////////////////////////////
 // APPLICATION ARCHITECTURE
 const form = document.querySelector('.form');
 const containerWorkouts = document.querySelector('.workouts');
@@ -96,18 +96,19 @@ class App {
   }
 
   _getPosition() {
-    if (navigator.geolocation)
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        this._loadMap.bind(this),
-        function () {
-          alert('Could not get your position');
-        }
+          this._loadMap.bind(this),
+          function() {
+            alert('Could not get your position');
+          },
       );
+    }
   }
 
   _loadMap(position) {
-    const { latitude } = position.coords;
-    const { longitude } = position.coords;
+    const {latitude} = position.coords;
+    const {longitude} = position.coords;
     // console.log(`https://www.google.pt/maps/@${latitude},${longitude}`);
 
     const coords = [latitude, longitude];
@@ -122,7 +123,7 @@ class App {
     // Handling clicks on map
     this.#map.on('click', this._showForm.bind(this));
 
-    this.#workouts.forEach(work => {
+    this.#workouts.forEach((work) => {
       this._renderWorkoutMarker(work);
     });
   }
@@ -150,8 +151,8 @@ class App {
 
   _newWorkout(e) {
     const validInputs = (...inputs) =>
-      inputs.every(inp => Number.isFinite(inp));
-    const allPositive = (...inputs) => inputs.every(inp => inp > 0);
+      inputs.every((inp) => Number.isFinite(inp));
+    const allPositive = (...inputs) => inputs.every((inp) => inp > 0);
 
     e.preventDefault();
 
@@ -159,7 +160,7 @@ class App {
     const type = inputType.value;
     const distance = +inputDistance.value;
     const duration = +inputDuration.value;
-    const { lat, lng } = this.#mapEvent.latlng;
+    const {lat, lng} = this.#mapEvent.latlng;
     let workout;
 
     // If workout running, create running object
@@ -173,8 +174,9 @@ class App {
         // !Number.isFinite(cadence)
         !validInputs(distance, duration, cadence) ||
         !allPositive(distance, duration, cadence)
-      )
+      ) {
         return alert('Inputs have to be positive numbers!');
+      }
 
       workout = new Running([lat, lng], distance, duration, cadence);
     }
@@ -186,8 +188,9 @@ class App {
       if (
         !validInputs(distance, duration, elevation) ||
         !allPositive(distance, duration)
-      )
+      ) {
         return alert('Inputs have to be positive numbers!');
+      }
 
       workout = new Cycling([lat, lng], distance, duration, elevation);
     }
@@ -210,20 +213,20 @@ class App {
 
   _renderWorkoutMarker(workout) {
     L.marker(workout.coords)
-      .addTo(this.#map)
-      .bindPopup(
-        L.popup({
-          maxWidth: 250,
-          minWidth: 100,
-          autoClose: false,
-          closeOnClick: false,
-          className: `${workout.type}-popup`,
-        })
-      )
-      .setPopupContent(
-        `${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${workout.description}`
-      )
-      .openPopup();
+        .addTo(this.#map)
+        .bindPopup(
+            L.popup({
+              maxWidth: 250,
+              minWidth: 100,
+              autoClose: false,
+              closeOnClick: false,
+              className: `${workout.type}-popup`,
+            }),
+        )
+        .setPopupContent(
+            `${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${workout.description}`,
+        )
+        .openPopup();
   }
 
   _renderWorkout(workout) {
@@ -233,7 +236,7 @@ class App {
         <div class="workout__details">
           <span class="workout__icon">${
             workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'
-          }</span>
+}</span>
           <span class="workout__value">${workout.distance}</span>
           <span class="workout__unit">km</span>
         </div>
@@ -244,7 +247,7 @@ class App {
         </div>
     `;
 
-    if (workout.type === 'running')
+    if (workout.type === 'running') {
       html += `
         <div class="workout__details">
           <span class="workout__icon">⚡️</span>
@@ -258,8 +261,9 @@ class App {
         </div>
       </li>
       `;
+    }
 
-    if (workout.type === 'cycling')
+    if (workout.type === 'cycling') {
       html += `
         <div class="workout__details">
           <span class="workout__icon">⚡️</span>
@@ -273,6 +277,7 @@ class App {
         </div>
       </li>
       `;
+    }
 
     form.insertAdjacentHTML('afterend', html);
   }
@@ -286,7 +291,7 @@ class App {
     if (!workoutEl) return;
 
     const workout = this.#workouts.find(
-      work => work.id === workoutEl.dataset.id
+        (work) => work.id === workoutEl.dataset.id,
     );
 
     this.#map.setView(workout.coords, this.#mapZoomLevel, {
@@ -311,7 +316,7 @@ class App {
 
     this.#workouts = data;
 
-    this.#workouts.forEach(work => {
+    this.#workouts.forEach((work) => {
       this._renderWorkout(work);
     });
   }
