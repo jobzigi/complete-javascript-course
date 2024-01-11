@@ -1,0 +1,23 @@
+{
+  "name": "complete-javascript-course",
+  "version": "1.0.0",
+  "description": "This branch of the repo contains starter files and final code for all sections and projects of the course, **exactly as shown in the videos**.",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "npm test",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JobVillagran/complete-javascript-course.git"
+  },
+  "author": "jobv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JobVillagran/complete-javascript-course/issues"
+  },
+  "homepage": "https://github.com/JobVillagran/complete-javascript-course#readme",
+  "devDependencies": {
+    "eslint": "^8.56.0"
+  }
+}
